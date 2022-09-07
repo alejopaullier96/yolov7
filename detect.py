@@ -59,6 +59,7 @@ def detect(save_img=False):
 
     # Get names and colors
     names = model.module.names if hasattr(model, 'module') else model.names
+    colors_ = [[random.randint(0, 255) for _ in range(3)] for _ in names]
     color_range = np.arange(0,len(names),1)*3
     color_range = color_range[::-1]
     colors = [[i]*3 for i in color_range]
@@ -129,6 +130,8 @@ def detect(save_img=False):
 
                     if save_img or view_img:  # Add bbox to image
                         label = f'{names[int(cls)]} {conf:.2f}'
+                        print(colors[int(cls)])
+                        print(colors_[int(cls)])
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=-1)
 
             # Print time (inference + NMS)
