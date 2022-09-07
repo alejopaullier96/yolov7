@@ -60,7 +60,6 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=3):
     color = color or [random.randint(0, 255) for _ in range(3)]
     color = (int(color[0]), int(color[1]), int(color[2])) 
     c1, c2 = (int(x[0]), int(x[1])), (int(x[2]), int(x[3]))
-    print(tl, color)
     cv2.rectangle(img, c1, c2, color, thickness=tl)
     if label:
         tf = 1  # font thickness
